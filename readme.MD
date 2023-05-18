@@ -1,4 +1,10 @@
 # Message Slot
+
+### 2023 Update
+
+I (Guy) updated the tests to fit to Major number 235 instead of 240.
+That is the only change I did to the original repository.
+
 ### Load to kernel
 Compile code and then load to kernel:
 
@@ -10,7 +16,7 @@ Then run `dmesg` to check which major the driver is associated with
 ### Create device
 Create device (with correct major, should be 240) and give it permissions
 ```
-sudo mknod /dev/msgslot1 c 240 1
+sudo mknod /dev/msgslot1 c 235 1
 sudo chmod o+rw /dev/msgslot1
 ```
 ### Send / Receive messages
@@ -44,7 +50,7 @@ Create a NEW device file and run the tester. If `/dev/msgslot1` already exists, 
 
 ```
 gcc -O3 -Wall -std=c11 tester.c -o tester
-sudo mknod /dev/msgslot1 c 240 1
+sudo mknod /dev/msgslot1 c 235 1
 sudo chmod o+rw /dev/msgslot1
 ./tester /dev/msgslot1
 ```
@@ -62,7 +68,7 @@ compile the tester, create a NEW device file and run the tester. If `/dev/msgslo
 ```
 gcc -O3 -Wall -std=c11 tester2.c -o tester
 sudo insmod message_slot.ko
-sudo mknod /dev/msgslot1 c 240 1
+sudo mknod /dev/msgslot1 c 235 1
 sudo chmod o+rw /dev/msgslot1
 ./tester2 /dev/msgslot1
 ```

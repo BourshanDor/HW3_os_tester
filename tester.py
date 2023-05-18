@@ -54,7 +54,7 @@ def create_slot_file(template, minor_num):
         print("THIS IS WRONG! Contact the developer of this file and tell him he made a mistake.")
         delete_all_files()
         exit(-1)
-    execute(f"test ! -f {filename} && sudo mknod {filename} c 240 {minor_num} || echo '' > /dev/null")
+    execute(f"test ! -f {filename} && sudo mknod {filename} c 235 {minor_num} || echo '' > /dev/null")
     execute(f"sudo chmod o+rw {filename}")
     FILE_NAMES[filename] = {}
     return filename
@@ -184,7 +184,6 @@ def test_random_operations(amount):
 @test_wrapper
 def test_ioctl_zero_fails():
     global FILE_NAMES
-
     for filename in FILE_NAMES:
         result = read_from_file(filename, 0)
         assert_contains(result.stderr, 'Invalid argument', {
@@ -242,4 +241,4 @@ if __name__ == '__main__':
 
     test_random_operations(amount=1000)
 
-    #delete_all_files()
+    delete_all_files()
