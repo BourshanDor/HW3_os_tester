@@ -66,7 +66,7 @@ sudo rm /dev/msgslot1
 compile the tester, create a NEW device file and run the tester. If `/dev/msgslot1` already exists, first remove it using `sudo rm /dev/msgslot1`: 
 
 ```
-gcc -O3 -Wall -std=c11 tester2.c -o tester
+gcc -O3 -Wall -std=c11 tester2.c -o tester2
 sudo insmod message_slot.ko
 sudo mknod /dev/msgslot1 c 235 1
 sudo chmod o+rw /dev/msgslot1
